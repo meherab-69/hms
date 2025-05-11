@@ -3,134 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City General Hospital - 24/7 Medical Care</title>
+    <title>Hospital Management System</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <style>
-        /* Header Styles */
-        .top-header {
-            background-color: #005792;
-            color: white;
-            padding: 0.5rem;
-            font-size: 0.9rem;
+        :root {
+            --primary-color: #dc3545;
+            --secondary-color: #ff4d5e;
+            --background-color: #f8f9fa;
+            --light-color: #ffffff;
+            --dark-color: #212529;
         }
         
-        .main-header {
-            background-color: white;
-            padding: 1rem 2rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
             display: flex;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            justify-content: center;
+            padding: 50px 0;
         }
         
-        .hospital-logo {
-            width: 80px;
-            margin-right: 1rem;
-        }
-        
-        .header-content {
-            border-left: 3px solid #005792;
-            padding-left: 1rem;
-        }
-        
-        .hospital-name {
-            color: #005792;
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0;
-        }
-        
-        .hospital-tagline {
-            color: #003459;
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background-color: #003459;
-            color: white;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
+        .system-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
             margin: 0 auto;
+        }
+        
+        .system-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .system-image {
+            flex: 1;
+            min-height: 300px;
+            background: linear-gradient(rgba(220, 53, 69, 0.7), rgba(220, 53, 69, 0.9));
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+            position: relative;
+        }
+        
+        .system-info {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .system-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .system-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .login-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
         
-        .footer-section h3 {
-            color: #00b4d8;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-section p {
-            margin: 0.5rem 0;
-        }
-        
-        .footer-bottom {
+        .login-option {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px 20px;
             text-align: center;
-            padding-top: 1rem;
-            margin-top: 2rem;
-            border-top: 1px solid #005792;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--dark-color);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #e9ecef;
+        }
+        
+        .login-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .login-label {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--light-color);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .system-row {
+                flex-direction: column;
+            }
+            
+            .system-image {
+                min-height: 200px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .login-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .system-info, .system-image {
+                padding: 30px;
+            }
+            
+            .system-title {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Top Header -->
-    <div class="top-header">
+    <!-- Main Content -->
+    <section class="main-content">
         <div class="container">
-            <div class="emergency-contact">
-                🚨 24/7 Emergency: Call 123-456-7890 | 📍 Location: 123 Health Street, Medical City
+            <div class="system-card">
+                <div class="system-row">
+                    <div class="system-image">
+                        <h2>Hospital Management System</h2>
+                        <p>Streamlining Healthcare Operations</p>
+                    </div>
+                    
+                    <div class="system-info">
+                        <h1 class="system-title">Welcome to HMS</h1>
+                        <p class="system-subtitle">Access the hospital management system by selecting your role below:</p>
+                        
+                        <div class="login-options">
+                            <a href="doctor/login-doctor.php" class="login-option">
+                                <div class="login-icon">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div class="login-label">I am a Doctor</div>
+                            </a>
+                            
+                            <a href="recep/login-receptionist.php" class="login-option">
+                                <div class="login-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="login-label">I am a Receptionist</div>
+                            </a>
+                            
+                            <a href="admin/login-admin.php" class="login-option">
+                                <div class="login-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div class="login-label">I am an Admin</div>
+                            </a>
+                            
+                            <a href="nurse/login-nurse.php" class="login-option">
+                                <div class="login-icon">
+                                    <i class="fas fa-user-nurse"></i>
+                                </div>
+                                <div class="login-label">I am a Nurse</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="main-header">
-        <img src="hospital-logo.png" alt="Hospital Logo" class="hospital-logo">
-        <div class="header-content">
-            <h1 class="hospital-name">City General Hospital</h1>
-            <p class="hospital-tagline">Compassionate Care • Advanced Medicine • 24/7 Service</p>
-        </div>
-    </header>
-
-    <!-- Rest of your content here -->
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p>📍 123 Health Street</p>
-                <p>Medical City, HC 4567</p>
-                <p>🌏 www.citygeneralhospital.com</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Emergency Services</h3>
-                <p>📞 Emergency: 123-456-7890</p>
-                <p>📞 Ambulance: 123-456-7891</p>
-                <p>📧 emergency@cityhospital.com</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Opening Hours</h3>
-                <p>🏥 24/7 Emergency Department</p>
-                <p>🕗 OPD: 8:00 AM - 8:00 PM</p>
-                <p>🕗 Specialty Clinics: 9:00 AM - 5:00 PM</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>© 2023 City General Hospital | Accredited by National Medical Council</p>
-            <p>Follow us: 
-                <a href="#" style="color: #00b4d8;">Facebook</a> | 
-                <a href="#" style="color: #00b4d8;">Twitter</a> | 
-                <a href="#" style="color: #00b4d8;">LinkedIn</a>
-            </p>
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; All Rights Reserved By Team No. 06</p>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
